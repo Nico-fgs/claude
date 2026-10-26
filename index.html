@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonora</title>
+  <meta name="theme-color" content="#121212" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <nav class="panel nav">
+        <a class="brand" href="#/home"><span data-icon="logo"></span><span>Sonora</span></a>
+        <a class="nav-link" href="#/home" data-route="home"><span data-icon="home"></span><span>Inicio</span></a>
+        <a class="nav-link" href="#/search" data-route="search"><span data-icon="search"></span><span>Buscar</span></a>
+        <a class="nav-link mobile-only" href="#/library" data-route="library"><span data-icon="library"></span><span>Biblioteca</span></a>
+      </nav>
+      <section class="panel library">
+        <header class="library-head">
+          <a class="nav-link" href="#/library" data-route="library"><span data-icon="library"></span><span>Tu biblioteca</span></a>
+          <button class="icon-btn" data-action="create-playlist" title="Crear playlist" aria-label="Crear playlist"><span data-icon="plus"></span></button>
+        </header>
+        <div class="chips" id="library-filters"></div>
+        <ul class="library-list" id="library-list"></ul>
+      </section>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="panel main" id="main">
+      <div class="topbar" id="topbar">
+        <div class="history">
+          <button class="round-btn" data-action="back" aria-label="Atrás"><span data-icon="chevronLeft"></span></button>
+          <button class="round-btn" data-action="forward" aria-label="Adelante"><span data-icon="chevronRight"></span></button>
+        </div>
+        <div class="search-box" id="search-box" hidden>
+          <span data-icon="search"></span>
+          <input id="search-input" type="search" placeholder="¿Qué quieres escuchar?" autocomplete="off" />
+        </div>
+        <div class="avatar" title="Tu perfil">S</div>
+      </div>
+      <div id="view" class="view"></div>
+    </main>
+
+    <!-- Panel derecho: cola de reproducción -->
+    <aside class="panel queue-panel" id="queue-panel" hidden>
+      <header>
+        <h2>Cola</h2>
+        <button class="icon-btn" data-action="toggle-queue" aria-label="Cerrar"><span data-icon="close"></span></button>
+      </header>
+      <div id="queue-content"></div>
+    </aside>
+
+    <!-- Reproductor -->
+    <footer class="player" id="player">
+      <div class="now-playing" id="now-playing"></div>
+      <div class="controls">
+        <div class="buttons">
+          <button class="icon-btn" data-action="shuffle" id="btn-shuffle" title="Aleatorio" aria-label="Aleatorio"><span data-icon="shuffle"></span></button>
+          <button class="icon-btn" data-action="prev" title="Anterior" aria-label="Anterior"><span data-icon="prev"></span></button>
+          <button class="play-btn" data-action="toggle-play" id="btn-play" title="Reproducir" aria-label="Reproducir"><span data-icon="play"></span></button>
+          <button class="icon-btn" data-action="next" title="Siguiente" aria-label="Siguiente"><span data-icon="next"></span></button>
+          <button class="icon-btn" data-action="repeat" id="btn-repeat" title="Repetir" aria-label="Repetir"><span data-icon="repeat"></span></button>
+        </div>
+        <div class="progress">
+          <span id="time-current">0:00</span>
+          <input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="Progreso" />
+          <span id="time-total">0:00</span>
+        </div>
+      </div>
+      <div class="extras">
+        <button class="icon-btn" data-action="toggle-queue" id="btn-queue" title="Cola" aria-label="Cola"><span data-icon="queue"></span></button>
+        <button class="icon-btn" data-action="mute" id="btn-mute" title="Silenciar" aria-label="Silenciar"><span data-icon="volume"></span></button>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Volumen" />
+      </div>
+    </footer>
+  </div>
+
+  <div class="menu" id="menu" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+  <audio id="audio" preload="auto"></audio>
+
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
